@@ -1,0 +1,21 @@
+{
+  "name": "s86_most_ridiculous_interent_memes",
+  "version": "1.0.0",
+  "description": "Project Title: Most Ridiculous Internet Memes\r Project Overview:\r This website showcases the funniest, most ridiculous memes from around the internet. Users can easily browse through memes, vote on their favorites, and comment on them, all without the need to log in. Memes will be organized by categories like “viral,” “absurd,” and “relatable,” and ranked based on votes from the community.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kalviumcommunity/s86_Most_ridiculous_interent_memes.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/kalviumcommunity/s86_Most_ridiculous_interent_memes/issues"
+  },
+  "homepage": "https://github.com/kalviumcommunity/s86_Most_ridiculous_interent_memes#readme"
+}
