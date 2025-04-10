@@ -22,4 +22,4 @@ Media Hosting: Cloudinary for efficient media storage and delivery.
 No Login/Authentication: Instant access for all users, no accounts needed.
 Why This Project:
 This website brings together the love of memes and easy engagement. It’s a fun way to interact with internet humor, vote on the best memes, and share opinions without the need for an account. The project offers hands-on experience with content management, voting systems, and user interactions, all while creating a simple and enjoyable platform.
-
+    
