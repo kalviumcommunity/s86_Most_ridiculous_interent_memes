@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/kalviumcommunity/s86_Most_ridiculous_interent_memes/issues"
   },
-  "homepage": "https://github.com/kalviumcommunity/s86_Most_ridiculous_interent_memes#readme"
+  "homepage": "https://github.com/kalviumcommunity/s86_Most_ridiculous_interent_memes#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
 }
