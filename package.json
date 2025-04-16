@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/kalviumcommunity/s86_Most_ridiculous_interent_memes#readme",
   "dependencies": {
-    "express": "^5.1.0"
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "mongodb": "^6.15.0"
   }
 }
