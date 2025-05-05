@@ -1,0 +1,19 @@
+meta {
+  name: Get Meme by ID
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://localhost:3000/api/memes/:id
+  body: json
+  auth: inherit
+}
+
+params:path {
+  id: 
+}
+
+headers {
+  Content-Type: application/json
+}

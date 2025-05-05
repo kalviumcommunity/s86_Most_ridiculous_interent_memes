@@ -1,0 +1,23 @@
+meta {
+  name: Post meme
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:3000/api/memes
+  body: json
+  auth: inherit
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "title": "New Meme",
+    "content": "This is a funny meme"
+  }
+  
+}
