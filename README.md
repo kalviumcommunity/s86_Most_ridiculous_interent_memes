@@ -1,5 +1,10 @@
 https://s86-most-ridiculous-interent-memes-3.onrender.com
 
+
+Landing Page deploy on cloudflare
+
+https://most-ridiculous-interent-memes.pages.dev/
+
 Project Title: Most Ridiculous Internet Memes
 Project Overview:
 This website showcases the funniest, most ridiculous memes from around the internet. Users can easily browse through memes, vote on their favorites, and comment on them, all without the need to log in. Memes will be organized by categories like “viral,” “absurd,” and “relatable,” and ranked based on votes from the community.
