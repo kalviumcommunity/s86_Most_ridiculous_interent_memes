@@ -1,0 +1,15 @@
+meta {
+  name: Delete meme
+  type: http
+  seq: 8
+}
+
+delete {
+  url: http://localhost:3000/api/memes/681839285a9d8d1b2e0dde71
+  body: json
+  auth: inherit
+}
+
+headers {
+  Content-Type: application/json
+}

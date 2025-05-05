@@ -1,8 +1,13 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const routes = require('./routes'); // Import the routes.js file
 
 const app = express();
+
+// Middleware to parse JSON
+app.use(bodyParser.json());
 
 // MongoDB connection
 mongoose
@@ -15,6 +20,9 @@ mongoose
     console.error('MongoDB connection failed:', error.message);
     process.exit(1); // Exit process with failure
   });
+
+// Use routes from routes.js
+app.use('/api', routes); // Prefix all routes with /api
 
 // Home route to display DB connection status
 app.get('/', (req, res) => {
