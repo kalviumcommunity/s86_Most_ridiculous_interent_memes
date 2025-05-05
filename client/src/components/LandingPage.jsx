@@ -1,6 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const LandingPage = () => {
+function LandingPage (){
+    const navigate = useNavigate();
+
+
+
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-blue-100 via-purple-200 to-pink-100 text-gray-800">
       {/* Heading Section */}
@@ -14,7 +19,7 @@ const LandingPage = () => {
       </p>
       
       {/* Button */}
-      <button className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-full shadow-lg hover:scale-105 transform transition-transform duration-300 hover:bg-gradient-to-l focus:ring-4 focus:ring-blue-300">
+      <button className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-full shadow-lg hover:scale-105 transform transition-transform duration-300 hover:bg-gradient-to-l focus:ring-4 focus:ring-blue-300" onClick={()=>navigate('/memes')}>
         Get Started
       </button>
 
