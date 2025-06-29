@@ -19,9 +19,13 @@ function LandingPage (){
       </p>
       
       {/* Button */}
-      <button className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-full shadow-lg hover:scale-105 transform transition-transform duration-300 hover:bg-gradient-to-l focus:ring-4 focus:ring-blue-300" onClick={()=>navigate('/memes')}>
-        Get Started
-      </button>
+     <button
+  onClick={() => navigate('/add-entity')}
+  className="px-8 py-3 bg-gradient-to-r from-blue-500 to-purple-500 text-white font-semibold rounded-full shadow-lg hover:scale-105 transform transition-transform duration-300"
+>
+  Add Entity
+</button>
+
 
       {/* Decorative Element */}
       <div className="absolute inset-0 -z-10 flex items-center justify-center">

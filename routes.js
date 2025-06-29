@@ -1,44 +1,22 @@
-require('dotenv').config();
 const express = require('express');
-const mongoose = require('mongoose');
+const router = express.Router();
+const Meme = require('./models/Meme'); // Import the Meme model
 
-const app = express();
-app.use(express.json()); // Middleware to parse JSON request bodies
-
-// MongoDB connection
-mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log('Connected to MongoDB'))
-  .catch((error) => {
-    console.error('MongoDB connection failed:', error.message);
-    process.exit(1); // Exit process with failure
-  });
-
-// Define a schema and model for memes
-const memeSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  content: { type: String, required: true },
-});
-
-const Meme = mongoose.model('Meme', memeSchema);
-
-// CRUD Routes directly on app
 // Create a new meme
-app.post('/api/memes', async (req, res) => {
+router.post('/memes', async (req, res) => {
   try {
-    const newMeme = new Meme(req.body);
-    await newMeme.save();
-    res.status(201).json(newMeme);
+    const newMeme = new Meme(req.body); // Create a new Meme document
+    await newMeme.save(); // Save the document to the database
+    res.status(201).json(newMeme); // Respond with the created document
   } catch (error) {
+    console.error('Error saving meme:', error);
     res.status(400).json({ error: error.message });
   }
 });
 
+
 // Read all memes
-app.get('/api/memes', async (req, res) => {
+router.get('/memes', async (req, res) => {
   try {
     const memes = await Meme.find();
     res.json(memes);
@@ -47,12 +25,13 @@ app.get('/api/memes', async (req, res) => {
   }
 });
 
-// Read a specific meme
-app.get('/api/memes/:id', async (req, res) => {
+
+// Read a specific meme by ID
+router.get('/memes/:id', async (req, res) => {
   try {
-    const meme = await Meme.findById(req.params.id);
+    const meme = await Meme.findById(req.params.id); // Fetch a Meme document by its ID
     if (meme) {
-      res.json(meme);
+      res.json(meme); // Respond with the fetched document
     } else {
       res.status(404).send('Meme not found');
     }
@@ -61,15 +40,15 @@ app.get('/api/memes/:id', async (req, res) => {
   }
 });
 
-// Update a meme
-app.put('/api/memes/:id', async (req, res) => {
+// Update a specific meme by ID
+router.put('/memes/:id', async (req, res) => {
   try {
     const updatedMeme = await Meme.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-      runValidators: true,
+      new: true, // Return the updated document
+      runValidators: true, // Ensure validations are run on updates
     });
     if (updatedMeme) {
-      res.json(updatedMeme);
+      res.json(updatedMeme); // Respond with the updated document
     } else {
       res.status(404).send('Meme not found');
     }
@@ -78,12 +57,12 @@ app.put('/api/memes/:id', async (req, res) => {
   }
 });
 
-// Delete a meme
-app.delete('/api/memes/:id', async (req, res) => {
+// Delete a specific meme by ID
+router.delete('/memes/:id', async (req, res) => {
   try {
-    const deletedMeme = await Meme.findByIdAndDelete(req.params.id);
+    const deletedMeme = await Meme.findByIdAndDelete(req.params.id); // Delete the Meme document by its ID
     if (deletedMeme) {
-      res.status(204).send();
+      res.status(204).send(); // Respond with no content
     } else {
       res.status(404).send('Meme not found');
     }
@@ -92,8 +71,4 @@ app.delete('/api/memes/:id', async (req, res) => {
   }
 });
 
-// Set port and start server
-const PORT = 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running at http://localhost:${PORT}`);
-});
+module.exports = router;

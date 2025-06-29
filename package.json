@@ -4,7 +4,8 @@
   "description": "Project Title: Most Ridiculous Internet Memes\r Project Overview:\r This website showcases the funniest, most ridiculous memes from around the internet. Users can easily browse through memes, vote on their favorites, and comment on them, all without the need to log in. Memes will be organized by categories like “viral,” “absurd,” and “relatable,” and ranked based on votes from the community.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -19,8 +20,13 @@
   },
   "homepage": "https://github.com/kalviumcommunity/s86_Most_ridiculous_interent_memes#readme",
   "dependencies": {
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "mongodb": "^6.15.0"
+    "mongodb": "^6.15.0",
+    "mongoose": "^8.16.0",
+    "nodemon": "^3.1.10",
+    "react-router-dom": "^7.5.3"
   }
 }
