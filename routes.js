@@ -39,6 +39,27 @@ router.get('/users', async (req, res) => {
 });
 
 // Read all memes
+
+router.get('/memes', (req, res) => {
+    const userId = req.query.created_by;
+    const query = userId 
+        ? 'SELECT * FROM memes WHERE created_by = ?' 
+        : 'SELECT * FROM memes';
+
+    db.query(query, [userId], (err, results) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(results);
+    });
+});
+
+// Fetch all users
+router.get('/users', (req, res) => {
+    db.query('SELECT * FROM users', (err, results) => {
+        if (err) return res.status(500).json({ error: err.message });
+        res.json(results);
+    });
+});
+
 router.get('/memes', async (req, res) => {
   const { created_by } = req.query;
   try {
