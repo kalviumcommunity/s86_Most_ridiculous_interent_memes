@@ -10,6 +10,22 @@ const app = express();
 // Middleware
 app.use(bodyParser.json());
 app.use(cors());
+const mysql = require('mysql2');
+
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'yourpassword',
+    database: 'your_database_name'
+});
+
+db.connect((err) => {
+    if (err) throw err;
+    console.log('MySQL Connected...');
+});
+
+module.exports = db;
+
 
 // MongoDB connection
 mongoose
