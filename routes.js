@@ -1,17 +1,18 @@
 const express = require('express');
 const router = express.Router();
-const Meme = require('./models/Meme'); // Import the Meme model
+const Meme = require('./models/Meme'); 
+const User = require('..  /models/User');// Import the Meme model
 
 // Create a new meme
 const { body, validationResult } = require('express-validator');
 
-// Create a new meme with validation
 router.post(
   '/memes',
   [
     body('title').notEmpty().withMessage('Title is required'),
     body('description').notEmpty().withMessage('Description is required'),
     body('video').isURL().withMessage('Video must be a valid URL'),
+    body('created_by').notEmpty().withMessage('Creator is required'),
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -28,16 +29,28 @@ router.post(
   }
 );
 
-
-// Read all memes
-router.get('/memes', async (req, res) => {
+router.get('/users', async (req, res) => {
   try {
-    const memes = await Meme.find(); // Fetch all Meme documents
-    res.json(memes); // Respond with the fetched documents
+    const users = await User.find(); // Fetch all users
+    res.json(users);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
+
+// Read all memes
+router.get('/memes', async (req, res) => {
+  const { created_by } = req.query;
+  try {
+    const memes = created_by
+      ? await Meme.find({ created_by }) // Filter by creator
+      : await Meme.find(); // Return all memes
+    res.json(memes);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 
 // Read a specific meme by ID
 router.get('/memes/:id', async (req, res) => {
