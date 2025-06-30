@@ -7,7 +7,7 @@ const Auth = () => {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/api/auth/login', { username });
+      const response = await axios.post('http://localhost:3000/api/auth/login', { username }, { withCredentials: true });
       setMessage(response.data.message);
     } catch (error) {
       setMessage('Error logging in.');
@@ -17,7 +17,7 @@ const Auth = () => {
 
   const handleLogout = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/api/auth/logout');
+      const response = await axios.post('http://localhost:3000/api/auth/logout', {}, { withCredentials: true });
       setMessage(response.data.message);
     } catch (error) {
       setMessage('Error logging out.');
@@ -25,9 +25,19 @@ const Auth = () => {
     }
   };
 
+  const handleVerify = async () => {
+    try {
+      const response = await axios.get('http://localhost:3000/api/auth/verify', { withCredentials: true });
+      setMessage(`Token is valid. User: ${response.data.user.username}`);
+    } catch (error) {
+      setMessage('Error verifying token.');
+      console.error(error);
+    }
+  };
+
   return (
     <div className="p-6">
-      <h1 className="text-xl font-bold mb-4">Authentication</h1>
+      <h1 className="text-xl font-bold mb-4">JWT Authentication</h1>
 
       {/* Login Form */}
       <input
@@ -42,6 +52,9 @@ const Auth = () => {
       </button>
       <button onClick={handleLogout} className="bg-red-500 text-white px-4 py-2 rounded ml-2">
         Logout
+      </button>
+      <button onClick={handleVerify} className="bg-green-500 text-white px-4 py-2 rounded ml-2">
+        Verify Token
       </button>
 
       {/* Message */}
