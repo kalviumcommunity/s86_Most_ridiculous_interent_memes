@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Meme = require('./models/Meme'); 
-const User = require('..  /models/User');// Import the Meme model
+const User = require('../models/User');// Import the Meme model
 
 // Create a new meme
 const { body, validationResult } = require('express-validator');
