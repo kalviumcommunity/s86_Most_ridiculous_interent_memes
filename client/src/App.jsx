@@ -3,6 +3,7 @@ import { BrowserRouter,Routes,Route } from "react-router-dom";
 import MemeCard from "./components/MemeCard";
 import LandingPage from "./components/LandingPage";
 import AddEntityForm from './components/AddEntityForm';
+import Auth from './components/Auth';
 BrowserRouter
 
 function App(){
@@ -19,7 +20,7 @@ function App(){
       <Route path="/" element={<LandingPage/>}/>
        <Route path="/filter-by-user" element={<MemeFilterByUser />} /> {/* New route */}
 
-
+<Route path="/auth" element={<Auth />} />
     </Routes>
     
     </BrowserRouter>
