@@ -17,6 +17,7 @@ function App(){
 
       <Route path="/memes" element={<MemeCard/>}/>
       <Route path="/" element={<LandingPage/>}/>
+       <Route path="/filter-by-user" element={<MemeFilterByUser />} /> {/* New route */}
 
 
     </Routes>
