@@ -21,6 +21,8 @@ function App(){
        <Route path="/filter-by-user" element={<MemeFilterByUser />} /> {/* New route */}
 
 <Route path="/auth" element={<Auth />} />
+<Route path="/auth" element={<Auth />} />
+
     </Routes>
     
     </BrowserRouter>
