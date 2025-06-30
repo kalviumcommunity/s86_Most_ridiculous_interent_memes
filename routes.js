@@ -14,17 +14,15 @@ router.post('/memes', async (req, res) => {
   }
 });
 
-
 // Read all memes
 router.get('/memes', async (req, res) => {
   try {
-    const memes = await Meme.find();
-    res.json(memes);
+    const memes = await Meme.find(); // Fetch all Meme documents
+    res.json(memes); // Respond with the fetched documents
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
-
 
 // Read a specific meme by ID
 router.get('/memes/:id', async (req, res) => {
